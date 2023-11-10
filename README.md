@@ -1,6 +1,6 @@
 ![License](https://img.shields.io/badge/Licence-MIT-green)
 
-# cocoon-projet/name
+# cocoon-projet/http
 
 ## Pré-requis
 
@@ -10,6 +10,6 @@
 
 via composer
 ```
-composer require cocoon-projet/name
+composer require cocoon-projet/http
 ```
 ## Documentation
