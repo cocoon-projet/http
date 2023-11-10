@@ -11,7 +11,7 @@ class HttpResponseSend
      * @param $response implement ResponseInterface
      * @param bool $exit
      */
-	public static function emit($response, $exit = false)
+    public static function emit($response, $exit = false)
     {
         if (headers_sent()) {
             throw new \RuntimeException('Impossible d\'émettre une réponse; en-têtes déjà envoyés');

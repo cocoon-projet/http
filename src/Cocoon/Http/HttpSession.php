@@ -21,8 +21,8 @@ class HttpSession
      */
     private function __construct($path = null)
     {
-        if($path != null) {
-        session_save_path($path);
+        if ($path != null) {
+            session_save_path($path);
         }
         if (session_id()) {
             $this->isSession = true;

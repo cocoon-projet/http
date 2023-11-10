@@ -6,7 +6,7 @@ use Cocoon\Http\Facades\Session;
 
 trait ReturnInputAndErrorData
 {
-	/**
+    /**
      * Enregistre les erreurs en session key = errors
      *
      * @param array $errors
