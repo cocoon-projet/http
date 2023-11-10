@@ -1,0 +1,9 @@
+/vendor
+/public
+/app
+/.idea
+/.vscode
+.phpunit.result.cache
+composer.lock
+index.php
+.htaccess
