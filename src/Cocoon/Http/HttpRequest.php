@@ -5,6 +5,7 @@ namespace Cocoon\Http;
 use Cocoon\Control\Validator;
 use Cocoon\Http\Facades\Response;
 use Cocoon\Http\Traits\ReturnInputAndErrorData;
+use Psr\Http\Message\ServerRequestInterface;
 
 class HttpRequest
 {
@@ -63,5 +64,14 @@ class HttpRequest
             $response = Response::redirect($this->request->getServerParams()['HTTP_REFERER'] ?? '');
             HttpResponseSend::emit($response, true);
         }
+    }
+    /**
+     * Retourne une instance de ServerRequest pour utiliser d'autres méthodes 
+     *
+     * @return ServerRequest
+     */
+    public function get(): ServerRequestInterface
+    {
+        return $this->request;
     }
 }
