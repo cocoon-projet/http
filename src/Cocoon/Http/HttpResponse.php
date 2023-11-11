@@ -3,10 +3,11 @@
 namespace Cocoon\Http;
 
 use Laminas\Diactoros\Response;
-use Laminas\Diactoros\Response\EmptyResponse;
+use Laminas\Diactoros\Response\XmlResponse;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\JsonResponse;
 use Laminas\Diactoros\Response\TextResponse;
+use Laminas\Diactoros\Response\EmptyResponse;
 
 /**
  * Gestion des réponses
@@ -44,6 +45,19 @@ class HttpResponse
     public function html($content = '', $status = 200, array $headers = [])
     {
         return new HtmlResponse($content, $status, $headers);
+    }
+
+    /**
+     * Retourne une instance de Laminas\Diactoros\HtmlResponse;
+     *
+     * @param string $content
+     * @param int $status
+     * @param array $headers
+     * @return HtmlResponse
+     */
+    public function xml($content = '', $status = 200, array $headers = [])
+    {
+        return new XmlResponse($content, $status, $headers);
     }
 
     /**

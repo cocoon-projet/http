@@ -1,4 +1,4 @@
-![License](https://img.shields.io/badge/Licence-MIT-green)
+[![Tests](https://github.com/cocoon-projet/http/actions/workflows/ci.yml/badge.svg)](https://github.com/cocoon-projet/http/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/cocoon-projet/http/graph/badge.svg?token=AX0056E45N)](https://codecov.io/gh/cocoon-projet/http) ![License](https://img.shields.io/badge/Licence-MIT-green)
 
 # cocoon-projet/http
 

@@ -12,16 +12,17 @@ class RedirectResponse extends BaseRedirectResponse
 
     public function __construct($url, $status = 302, array $headers = [])
     {
+        $uri = $url;
         if (empty($url)) {
             throw new \Exception('Redirection impossible. l\'url est vide.');
         }
         if (preg_match('/^https?/', $url)) {
             $uri = $url;
-        } else {
+        } /*else {
             // TODO: voir parametre config
             //$uri = config('app.base_url') . '/' . trim($url, '/');
             $uri = trim(dirname($_SERVER['SCRIPT_NAME']), DIRECTORY_SEPARATOR) . '/' . trim($url, '/');
-        }
+        }*/
         parent::__construct($uri, $status, $headers);
     }
 
