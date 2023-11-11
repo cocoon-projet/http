@@ -21,7 +21,7 @@ class HttpResponse
     }
 
     /**
-     * Retourne une instance de Zend\Diactoros\Response;
+     * Retourne une instance de Laminas\Diactoros\Response;
      *
      * @param string $content
      * @param int $status
@@ -34,7 +34,7 @@ class HttpResponse
     }
 
     /**
-     * Retourne une instance de Zend\Diactoros\HtmlResponse;
+     * Retourne une instance de Laminas\Diactoros\HtmlResponse;
      *
      * @param string $content
      * @param int $status
@@ -47,7 +47,7 @@ class HttpResponse
     }
 
     /**
-     * Retourne une instance de Zend\Diactoros\TextResponse;
+     * Retourne une instance de Laminas\Diactoros\TextResponse;
      *
      * @param string $content
      * @param int $status
@@ -60,7 +60,7 @@ class HttpResponse
     }
 
     /**
-     * Retourne une instance de Zend\Diactoros\JsonResponse;
+     * Retourne une instance de Laminas\Diactoros\JsonResponse;
      *
      * @param string $content
      * @param int $status
@@ -73,7 +73,7 @@ class HttpResponse
     }
 
     /**
-     * Retourne une instance de Zend\Diactoros\RedirectResponse;
+     * Retourne une instance de Laminas\Diactoros\RedirectResponse;
      *
      * @param $uri
      * @param int $status
@@ -87,12 +87,12 @@ class HttpResponse
     }
 
     /**
-     * Retourne une instance de Zend\Diactoros\EmptyResponse;
+     * Retourne une instance de Laminas\Diactoros\EmptyResponse;
      *
      * @return EmptyResponse
      */
-    public function empty()
+    public function empty(int $status = 204, array $headers = [])
     {
-        return new EmptyResponse();
+        return new EmptyResponse($status, $headers);
     }
 }
