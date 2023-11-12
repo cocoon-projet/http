@@ -35,7 +35,7 @@ class HttpRequest
 
     public function input($key)
     {
-        $this->request->getParsedBody()[$key];
+        return $this->request->getParsedBody()[$key];
     }
 
     public function only($keys = [])

@@ -22,4 +22,11 @@ class HttpRequestTest extends TestCase
         $_GET = ['name' => 'Doe', 'surname' => 'John'];
         $this->assertSame('Doe', Request::query('name'));
     }
+
+    public function testRequestOnlyData(): void
+    {
+        $_POST = ['name' => 'Doe', 'surname' => 'John'];
+        $this->assertSame(['surname' => 'John'], Request::only(['surname']));
+        $this->assertEquals('John', Request::input('surname'));
+    }
 }

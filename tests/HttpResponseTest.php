@@ -37,9 +37,11 @@ class HttpResponseTest extends TestCase
     {
         $body = '<html><title>html response</title><body>welcome</body></html>';
         $response = Response::html($body);
-        $send = HttpResponseSend::emit($response);
-        $this->assertSame('welcome', (string) $send);
-        $this->assertSame(200, $response->getStatusCode());
+        ob_start();
+        HttpResponseSend::emit($response);
+        $send = ob_get_clean();
+        $this->assertSame($body, (string) $send);
+
     }*/
 
     public function testXmlResponse()
