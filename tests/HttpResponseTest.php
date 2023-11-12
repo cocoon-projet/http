@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Cocoon\Http\Facades\Response;
+use Cocoon\Http\HttpResponseSend;
 use Psr\Http\Message\ResponseInterface;
 
 class HttpResponseTest extends TestCase
@@ -26,15 +27,24 @@ class HttpResponseTest extends TestCase
     public function testHtmlResponse()
     {
         $body = '<html><title>html response</title></html>';
-        $response = Response::text($body);
+        $response = Response::html($body);
         $this->assertInstanceOf(ResponseInterface::class, $response);
         $this->assertSame($body, (string) $response->getBody());
         $this->assertSame(200, $response->getStatusCode());
     }
+    /*
+    public function testHtmlSendResponse()
+    {
+        $body = '<html><title>html response</title><body>welcome</body></html>';
+        $response = Response::html($body);
+        $send = HttpResponseSend::emit($response);
+        $this->assertSame('welcome', (string) $send);
+        $this->assertSame(200, $response->getStatusCode());
+    }*/
 
     public function testXmlResponse()
     {
-        $xml = '<test>xml response</title></test>';
+        $xml = '<test>xml response</test>';
         $response = Response::xml($xml);
         $this->assertInstanceOf(ResponseInterface::class, $response);
         $this->assertSame('application/xml; charset=utf-8', $response->getHeaderLine('content-type'));
