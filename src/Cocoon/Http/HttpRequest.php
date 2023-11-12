@@ -66,7 +66,7 @@ class HttpRequest
         }
     }
     /**
-     * Retourne une instance de ServerRequest pour utiliser d'autres méthodes 
+     * Retourne une instance de ServerRequest pour utiliser d'autres méthodes
      *
      * @return ServerRequest
      */
