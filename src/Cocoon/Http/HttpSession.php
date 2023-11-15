@@ -67,6 +67,15 @@ class HttpSession
 
         $this->isSession = true;
     }
+    /**
+     * Retourne si la session est ouverte
+     *
+     * @return boolean
+     */
+    public function isSession(): bool
+    {
+        return $this->isSession;
+    }
 
     /**
      * Enregistre une valeur en session
