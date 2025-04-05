@@ -18,35 +18,35 @@ use Psr\Http\Message\StreamInterface;
  *
  * Cette classe fournit des méthodes pour créer différents types de réponses HTTP
  * conformes à la norme PSR-7.
- * 
+ *
  * @package Cocoon\Http
  */
 class HttpResponse
 {
     /**
      * En-têtes par défaut pour les réponses
-     * 
+     *
      * @var array
      */
     protected array $defaultHeaders = [];
-    
+
     /**
      * Code d'état HTTP par défaut
-     * 
+     *
      * @var int
      */
     protected int $defaultStatus = 200;
-    
+
     /**
      * Constructeur
      */
     public function __construct()
     {
     }
-    
+
     /**
      * Définit les en-têtes par défaut pour toutes les réponses
-     * 
+     *
      * @param array $headers En-têtes à définir
      * @return $this
      */
@@ -55,10 +55,10 @@ class HttpResponse
         $this->defaultHeaders = array_merge($this->defaultHeaders, $headers);
         return $this;
     }
-    
+
     /**
      * Définit le code d'état par défaut pour toutes les réponses
-     * 
+     *
      * @param int $status Code d'état HTTP
      * @return $this
      */
@@ -80,14 +80,14 @@ class HttpResponse
     {
         $status = $status ?? $this->defaultStatus;
         $headers = array_merge($this->defaultHeaders, $headers);
-        
+
         if (is_string($content) && $content !== 'php://memory') {
             $stream = new Stream('php://temp', 'wb+');
             $stream->write($content);
             $stream->rewind();
             return new Response($stream, $status, $headers);
         }
-        
+
         return new Response($content, $status, $headers);
     }
 
@@ -179,10 +179,10 @@ class HttpResponse
         $headers = array_merge($this->defaultHeaders, $headers);
         return new EmptyResponse($status, $headers);
     }
-    
+
     /**
      * Retourne une réponse pour un fichier
-     * 
+     *
      * @param string $path Chemin du fichier
      * @param string|null $contentType Type MIME du fichier
      * @param int|null $status Code d'état HTTP
@@ -190,29 +190,33 @@ class HttpResponse
      * @return ResponseInterface
      * @throws \RuntimeException Si le fichier n'existe pas ou n'est pas lisible
      */
-    public function file(string $path, ?string $contentType = null, ?int $status = null, array $headers = []): ResponseInterface
-    {
+    public function file(
+        string $path,
+        ?string $contentType = null,
+        ?int $status = null,
+        array $headers = []
+    ): ResponseInterface {
         if (!file_exists($path) || !is_readable($path)) {
             throw new \RuntimeException("Le fichier '$path' n'existe pas ou n'est pas lisible");
         }
-        
+
         $status = $status ?? $this->defaultStatus;
         $headers = array_merge($this->defaultHeaders, $headers);
-        
+
         if ($contentType === null) {
             $contentType = $this->getMimeType($path);
         }
-        
+
         $headers['Content-Type'] = $contentType;
         $headers['Content-Length'] = filesize($path);
-        
+
         $stream = new Stream($path, 'r');
         return new Response($stream, $status, $headers);
     }
-    
+
     /**
      * Retourne une réponse pour télécharger un fichier
-     * 
+     *
      * @param string $path Chemin du fichier
      * @param string|null $filename Nom du fichier pour le téléchargement
      * @param int|null $status Code d'état HTTP
@@ -220,36 +224,40 @@ class HttpResponse
      * @return ResponseInterface
      * @throws \RuntimeException Si le fichier n'existe pas ou n'est pas lisible
      */
-    public function download(string $path, ?string $filename = null, ?int $status = null, array $headers = []): ResponseInterface
-    {
+    public function download(
+        string $path,
+        ?string $filename = null,
+        ?int $status = null,
+        array $headers = []
+    ): ResponseInterface {
         if (!file_exists($path) || !is_readable($path)) {
             throw new \RuntimeException("Le fichier '$path' n'existe pas ou n'est pas lisible");
         }
-        
+
         $status = $status ?? $this->defaultStatus;
         $headers = array_merge($this->defaultHeaders, $headers);
-        
+
         $filename = $filename ?? basename($path);
         $contentType = $this->getMimeType($path);
-        
+
         $headers['Content-Type'] = $contentType;
         $headers['Content-Length'] = filesize($path);
         $headers['Content-Disposition'] = 'attachment; filename="' . $filename . '"';
-        
+
         $stream = new Stream($path, 'r');
         return new Response($stream, $status, $headers);
     }
-    
+
     /**
      * Détermine le type MIME d'un fichier
-     * 
+     *
      * @param string $path Chemin du fichier
      * @return string Type MIME
      */
     protected function getMimeType(string $path): string
     {
         $extension = pathinfo($path, PATHINFO_EXTENSION);
-        
+
         $mimeTypes = [
             'txt' => 'text/plain',
             'html' => 'text/html',
@@ -271,13 +279,13 @@ class HttpResponse
             'mp3' => 'audio/mpeg',
             'mp4' => 'video/mp4',
         ];
-        
+
         return $mimeTypes[strtolower($extension)] ?? 'application/octet-stream';
     }
-    
+
     /**
      * Retourne une réponse 404 Not Found
-     * 
+     *
      * @param string $message Message d'erreur
      * @param array $headers En-têtes HTTP
      * @return ResponseInterface
@@ -287,10 +295,10 @@ class HttpResponse
         $headers = array_merge($this->defaultHeaders, $headers);
         return $this->html('<h1>404 Not Found</h1><p>' . htmlspecialchars($message) . '</p>', 404, $headers);
     }
-    
+
     /**
      * Retourne une réponse 403 Forbidden
-     * 
+     *
      * @param string $message Message d'erreur
      * @param array $headers En-têtes HTTP
      * @return ResponseInterface
@@ -300,10 +308,10 @@ class HttpResponse
         $headers = array_merge($this->defaultHeaders, $headers);
         return $this->html('<h1>403 Forbidden</h1><p>' . htmlspecialchars($message) . '</p>', 403, $headers);
     }
-    
+
     /**
      * Retourne une réponse 401 Unauthorized
-     * 
+     *
      * @param string $message Message d'erreur
      * @param array $headers En-têtes HTTP
      * @return ResponseInterface
@@ -313,10 +321,10 @@ class HttpResponse
         $headers = array_merge($this->defaultHeaders, $headers);
         return $this->html('<h1>401 Unauthorized</h1><p>' . htmlspecialchars($message) . '</p>', 401, $headers);
     }
-    
+
     /**
      * Retourne une réponse 400 Bad Request
-     * 
+     *
      * @param string $message Message d'erreur
      * @param array $headers En-têtes HTTP
      * @return ResponseInterface
@@ -326,17 +334,25 @@ class HttpResponse
         $headers = array_merge($this->defaultHeaders, $headers);
         return $this->html('<h1>400 Bad Request</h1><p>' . htmlspecialchars($message) . '</p>', 400, $headers);
     }
-    
+
     /**
      * Retourne une réponse 500 Internal Server Error
-     * 
+     *
      * @param string $message Message d'erreur
      * @param array $headers En-têtes HTTP
      * @return ResponseInterface
      */
-    public function serverError(string $message = 'Internal Server Error', array $headers = []): ResponseInterface
-    {
+    public function serverError(
+        string $message = 'Internal Server Error',
+        array $headers = []
+    ): ResponseInterface {
         $headers = array_merge($this->defaultHeaders, $headers);
-        return $this->html('<h1>500 Internal Server Error</h1><p>' . htmlspecialchars($message) . '</p>', 500, $headers);
+        return $this->html(
+            '<h1>500 Internal Server Error</h1><p>' .
+            htmlspecialchars($message)
+            . '</p>',
+            500,
+            $headers
+        );
     }
 }

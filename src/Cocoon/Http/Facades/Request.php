@@ -33,4 +33,4 @@ class Request
     {
         return self::getInstance()->$method(...$arguments);
     }
-} 
+}

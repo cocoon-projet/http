@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * Middleware pour la gestion des méthodes HTTP
- * 
+ *
  * Ce middleware permet de gérer les méthodes HTTP alternatives via le champ _METHOD
  * pour les navigateurs qui ne supportent que GET et POST.
  *

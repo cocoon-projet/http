@@ -12,7 +12,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Middleware de protection CSRF
- * 
+ *
  * Ce middleware protège l'application contre les attaques CSRF (Cross-Site Request Forgery)
  * en vérifiant la présence et la validité d'un jeton pour toutes les requêtes non sécurisées.
  *

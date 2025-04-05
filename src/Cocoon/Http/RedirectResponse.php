@@ -10,7 +10,7 @@ use Psr\Http\Message\UriInterface;
 
 /**
  * Classe de réponse de redirection
- * 
+ *
  * Cette classe étend la réponse de redirection de base de Laminas Diactoros
  * en ajoutant des fonctionnalités pour les messages flash et la gestion des entrées.
  */
@@ -20,14 +20,14 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * URL de base de l'application
-     * 
+     *
      * @var string|null
      */
     protected static ?string $baseUrl = null;
 
     /**
      * Constructeur
-     * 
+     *
      * @param string|UriInterface $url URL de redirection
      * @param int $status Code d'état HTTP (301, 302, 303, 307, 308)
      * @param array $headers En-têtes HTTP
@@ -46,7 +46,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Définit l'URL de base de l'application
-     * 
+     *
      * @param string $baseUrl URL de base
      * @return void
      */
@@ -57,7 +57,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Obtient l'URL de base de l'application
-     * 
+     *
      * @return string URL de base
      */
     public static function getBaseUrl(): string
@@ -72,7 +72,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Normalise une URL
-     * 
+     *
      * @param string|UriInterface $url URL à normaliser
      * @return string|UriInterface URL normalisée
      */
@@ -98,7 +98,7 @@ class RedirectResponse extends BaseRedirectResponse
 
     /**
      * Ajoute un message flash
-     * 
+     *
      * @param string $key Clé du message
      * @param string $message Contenu du message
      * @return $this
@@ -111,7 +111,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Ajoute un message flash de succès
-     * 
+     *
      * @param string $message Message de succès
      * @return $this
      */
@@ -122,7 +122,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Ajoute un message flash d'erreur
-     * 
+     *
      * @param string $message Message d'erreur
      * @return $this
      */
@@ -133,7 +133,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Ajoute un message flash d'information
-     * 
+     *
      * @param string $message Message d'information
      * @return $this
      */
@@ -144,7 +144,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Ajoute un message flash d'avertissement
-     * 
+     *
      * @param string $message Message d'avertissement
      * @return $this
      */
@@ -155,7 +155,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Ajoute plusieurs messages flash
-     * 
+     *
      * @param array $messages Tableau associatif de messages (clé => message)
      * @return $this
      */
@@ -170,7 +170,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Redirige avec les entrées actuelles
-     * 
+     *
      * @return $this
      */
     public function withInput(): self
@@ -181,7 +181,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Redirige avec les erreurs spécifiées
-     * 
+     *
      * @param array $errors Tableau d'erreurs
      * @return $this
      */
@@ -193,7 +193,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Crée une redirection vers la page précédente
-     * 
+     *
      * @param string $fallback URL de repli si la page précédente n'est pas disponible
      * @param int $status Code d'état HTTP
      * @param array $headers En-têtes HTTP
@@ -207,7 +207,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Crée une redirection vers la page d'accueil
-     * 
+     *
      * @param int $status Code d'état HTTP
      * @param array $headers En-têtes HTTP
      * @return static
@@ -219,7 +219,7 @@ class RedirectResponse extends BaseRedirectResponse
     
     /**
      * Crée une redirection permanente (301)
-     * 
+     *
      * @param string|UriInterface $url URL de redirection
      * @param array $headers En-têtes HTTP
      * @return static

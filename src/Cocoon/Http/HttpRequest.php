@@ -12,7 +12,7 @@ use Laminas\Diactoros\ServerRequestFactory;
 
 /**
  * Classe de gestion des requêtes HTTP
- * 
+ *
  * Cette classe encapsule les fonctionnalités de traitement des requêtes HTTP
  * en fournissant des méthodes simples pour accéder aux données de la requête.
  */
@@ -121,7 +121,7 @@ class HttpRequest
 
     /**
      * Récupère un fichier téléchargé
-     * 
+     *
      * @param string|null $key Clé du fichier à récupérer, null pour tous les fichiers
      * @return UploadedFileInterface|array|null
      */
@@ -138,7 +138,7 @@ class HttpRequest
 
     /**
      * Vérifie si un fichier a été téléchargé
-     * 
+     *
      * @param string $key Clé du fichier à vérifier
      * @return bool
      */
@@ -150,7 +150,7 @@ class HttpRequest
 
     /**
      * Vérifie si une donnée existe dans la requête
-     * 
+     *
      * @param string $key Clé à vérifier
      * @return bool
      */
@@ -162,7 +162,7 @@ class HttpRequest
 
     /**
      * Récupère toutes les données sauf celles spécifiées
-     * 
+     *
      * @param array $keys Tableau des clés à exclure
      * @return array
      */
@@ -179,7 +179,7 @@ class HttpRequest
 
     /**
      * Valide les données de la requête
-     * 
+     *
      * @param array $rules Règles de validation
      * @param array|null $messages Messages d'erreur personnalisés
      * @return bool True si la validation réussit
@@ -206,7 +206,7 @@ class HttpRequest
 
     /**
      * Vérifie si la méthode HTTP correspond à celle spécifiée
-     * 
+     *
      * @param string $method Méthode à vérifier
      * @return bool
      */
@@ -217,7 +217,7 @@ class HttpRequest
 
     /**
      * Vérifie si la requête est une requête GET
-     * 
+     *
      * @return bool
      */
     public function isGet(): bool
@@ -227,7 +227,7 @@ class HttpRequest
 
     /**
      * Vérifie si la requête est une requête POST
-     * 
+     *
      * @return bool
      */
     public function isPost(): bool
@@ -237,7 +237,7 @@ class HttpRequest
 
     /**
      * Vérifie si la requête est une requête PUT
-     * 
+     *
      * @return bool
      */
     public function isPut(): bool
@@ -247,7 +247,7 @@ class HttpRequest
 
     /**
      * Vérifie si la requête est une requête DELETE
-     * 
+     *
      * @return bool
      */
     public function isDelete(): bool
@@ -257,7 +257,7 @@ class HttpRequest
 
     /**
      * Vérifie si la requête est une requête PATCH
-     * 
+     *
      * @return bool
      */
     public function isPatch(): bool
@@ -267,19 +267,19 @@ class HttpRequest
 
     /**
      * Vérifie si la requête est une requête AJAX
-     * 
+     *
      * @return bool
      */
     public function isAjax(): bool
     {
         $headers = $this->request->getHeaders();
-        return isset($headers['X-Requested-With']) && 
+        return isset($headers['X-Requested-With']) &&
                $headers['X-Requested-With'][0] === 'XMLHttpRequest';
     }
 
     /**
      * Vérifie si la requête est sécurisée (HTTPS)
-     * 
+     *
      * @return bool
      */
     public function isSecure(): bool
@@ -290,7 +290,7 @@ class HttpRequest
 
     /**
      * Récupère l'adresse IP du client
-     * 
+     *
      * @return string
      */
     public function ip(): string
@@ -323,7 +323,7 @@ class HttpRequest
 
     /**
      * Récupère l'agent utilisateur
-     * 
+     *
      * @return string|null
      */
     public function userAgent(): ?string
@@ -334,7 +334,7 @@ class HttpRequest
 
     /**
      * Récupère l'URL complète de la requête
-     * 
+     *
      * @return string
      */
     public function url(): string
@@ -345,7 +345,7 @@ class HttpRequest
 
     /**
      * Récupère le chemin de la requête
-     * 
+     *
      * @return string
      */
     public function path(): string
@@ -355,7 +355,7 @@ class HttpRequest
 
     /**
      * Récupère un en-tête de la requête
-     * 
+     *
      * @param string $key Nom de l'en-tête
      * @param string|null $default Valeur par défaut
      * @return string|null
@@ -372,7 +372,7 @@ class HttpRequest
 
     /**
      * Récupère tous les en-têtes de la requête
-     * 
+     *
      * @return array
      */
     public function headers(): array
@@ -389,7 +389,7 @@ class HttpRequest
 
     /**
      * Récupère un cookie
-     * 
+     *
      * @param string $key Nom du cookie
      * @param mixed $default Valeur par défaut
      * @return mixed
@@ -402,7 +402,7 @@ class HttpRequest
 
     /**
      * Récupère tous les cookies
-     * 
+     *
      * @return array
      */
     public function cookies(): array

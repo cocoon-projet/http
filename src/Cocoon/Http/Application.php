@@ -34,4 +34,4 @@ class Application implements RequestHandlerInterface
     {
         return $this->handle($request);
     }
-} 
+}

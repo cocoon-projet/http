@@ -7,9 +7,9 @@ use Cocoon\Http\HttpSession;
 
 /**
  * Façade pour la classe HttpSession
- * 
+ *
  * Cette façade permet d'accéder aux méthodes de HttpSession de manière statique.
- * 
+ *
  * @method static void start()
  * @method static bool isSession()
  * @method static void set(string $key, mixed $value, int|null $ttl = null)
@@ -42,7 +42,7 @@ class Session
 {
     /**
      * Gère les appels statiques aux méthodes de HttpSession
-     * 
+     *
      * @param string $name Nom de la méthode
      * @param array $arguments Arguments de la méthode
      * @return mixed Résultat de l'appel de méthode
@@ -63,9 +63,9 @@ class Session
     
     /**
      * Définit le chemin de sauvegarde des sessions
-     * 
+     *
      * Méthode d'aide qui appelle directement la méthode statique de HttpSession
-     * 
+     *
      * @param string $path Chemin de sauvegarde
      * @return void
      */
@@ -76,7 +76,7 @@ class Session
     
     /**
      * Obtient l'instance de HttpSession
-     * 
+     *
      * @return HttpSession
      */
     public static function getInstance(): HttpSession
@@ -86,9 +86,9 @@ class Session
     
     /**
      * Démarre la session et retourne l'instance
-     * 
+     *
      * Méthode fluide qui permet d'enchaîner les appels
-     * 
+     *
      * @return HttpSession
      */
     public static function startAndGetInstance(): HttpSession
@@ -100,7 +100,7 @@ class Session
     
     /**
      * Vérifie si une valeur existe en session et la retourne, sinon retourne la valeur par défaut
-     * 
+     *
      * @param string $key Clé à vérifier
      * @param mixed $default Valeur par défaut
      * @return mixed
@@ -113,7 +113,7 @@ class Session
     
     /**
      * Définit une valeur en session uniquement si la clé n'existe pas déjà
-     * 
+     *
      * @param string $key Clé à définir
      * @param mixed $value Valeur à enregistrer
      * @param int|null $ttl Durée de vie en secondes
@@ -131,7 +131,7 @@ class Session
     
     /**
      * Récupère une valeur de session puis la supprime
-     * 
+     *
      * @param string $key Clé à récupérer et supprimer
      * @param mixed $default Valeur par défaut si la clé n'existe pas
      * @return mixed
@@ -150,7 +150,7 @@ class Session
     
     /**
      * Incrémente une valeur numérique en session
-     * 
+     *
      * @param string $key Clé à incrémenter
      * @param int $amount Montant de l'incrémentation
      * @return int Nouvelle valeur
@@ -166,7 +166,7 @@ class Session
     
     /**
      * Décrémente une valeur numérique en session
-     * 
+     *
      * @param string $key Clé à décrémenter
      * @param int $amount Montant de la décrémentation
      * @return int Nouvelle valeur

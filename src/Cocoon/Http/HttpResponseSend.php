@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * Classe d'émission des réponses HTTP
- * 
+ *
  * Cette classe gère l'envoi des réponses HTTP au client en utilisant
  * l'émetteur SAPI de Laminas.
  */
@@ -17,14 +17,14 @@ class HttpResponseSend
 {
     /**
      * Instance de l'émetteur
-     * 
+     *
      * @var EmitterInterface|null
      */
     private static ?EmitterInterface $emitter = null;
 
     /**
      * Définit l'émetteur à utiliser
-     * 
+     *
      * @param EmitterInterface $emitter Émetteur à utiliser
      * @return void
      */
@@ -35,7 +35,7 @@ class HttpResponseSend
 
     /**
      * Obtient l'émetteur actuel ou en crée un nouveau
-     * 
+     *
      * @return EmitterInterface
      */
     public static function getEmitter(): EmitterInterface
@@ -69,7 +69,7 @@ class HttpResponseSend
 
     /**
      * Valide que l'émission de la réponse est possible
-     * 
+     *
      * @throws \RuntimeException Si l'émission n'est pas possible
      * @return void
      */
@@ -95,7 +95,7 @@ class HttpResponseSend
 
     /**
      * Émet une réponse et termine le script
-     * 
+     *
      * @param ResponseInterface $response Réponse à émettre
      * @return void
      */
@@ -106,7 +106,7 @@ class HttpResponseSend
 
     /**
      * Nettoie tous les tampons de sortie
-     * 
+     *
      * @return void
      */
     public static function cleanOutputBuffers(): void

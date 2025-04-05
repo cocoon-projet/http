@@ -62,7 +62,7 @@ class HttpSession
 
     /**
      * Session constructor.
-     * 
+     *
      * @param string|null $path Chemin de sauvegarde des sessions
      */
     private function __construct(?string $path = null)
@@ -121,7 +121,7 @@ class HttpSession
 
     /**
      * Configure le handler de session
-     * 
+     *
      * @param string $type Type de handler (files, database, redis, memcached)
      * @param array $options Options de configuration
      * @return bool Succès de la configuration
@@ -210,7 +210,7 @@ class HttpSession
 
     /**
      * Démarre la session
-     * 
+     *
      * @return void
      * @throws \RuntimeException Si la session ne peut pas être démarrée
      */
@@ -250,7 +250,7 @@ class HttpSession
 
     /**
      * Vérifie si une session peut être démarrée
-     * 
+     *
      * @return bool
      */
     public function canStart(): bool
@@ -260,7 +260,7 @@ class HttpSession
     
     /**
      * Nettoie les données de session expirées
-     * 
+     *
      * @return void
      */
     protected function cleanExpiredData(): void
@@ -325,7 +325,7 @@ class HttpSession
 
     /**
      * Enregistre plusieurs valeurs en session
-     * 
+     *
      * @param array $values Tableau associatif de valeurs
      * @param int|null $ttl Durée de vie en secondes (null = pas d'expiration)
      * @return void
@@ -359,7 +359,7 @@ class HttpSession
 
     /**
      * Vérifie si un token CSRF est valide
-     * 
+     *
      * @param string $token Token à vérifier
      * @return bool
      */
@@ -466,7 +466,7 @@ class HttpSession
 
     /**
      * Supprime les messages flash
-     * 
+     *
      * @return void
      */
     public function clearFlash(): void
@@ -493,7 +493,7 @@ class HttpSession
 
     /**
      * Vérifie si plusieurs clés existent en session
-     * 
+     *
      * @param array $keys Tableau de clés à vérifier
      * @return bool True si toutes les clés existent
      */
@@ -531,7 +531,7 @@ class HttpSession
 
     /**
      * Récupère plusieurs valeurs de session
-     * 
+     *
      * @param array $keys Tableau de clés à récupérer
      * @param mixed $default Valeur par défaut pour les clés inexistantes
      * @return array Tableau associatif des valeurs
@@ -563,7 +563,7 @@ class HttpSession
 
     /**
      * Supprime les valeurs de session input
-     * 
+     *
      * @return void
      */
     public function clearInput(): void
@@ -616,7 +616,7 @@ class HttpSession
 
     /**
      * Supprime plusieurs valeurs de session
-     * 
+     *
      * @param array $keys Tableau de clés à supprimer
      * @return void
      */
@@ -671,7 +671,7 @@ class HttpSession
 
     /**
      * Stocke des métadonnées de session
-     * 
+     *
      * @param string $key Clé de la métadonnée
      * @param mixed $value Valeur de la métadonnée
      * @return void
@@ -687,7 +687,7 @@ class HttpSession
 
     /**
      * Récupère une métadonnée de session
-     * 
+     *
      * @param string $key Clé de la métadonnée
      * @param mixed $default Valeur par défaut
      * @return mixed
@@ -703,7 +703,7 @@ class HttpSession
 
     /**
      * Vérifie si une métadonnée existe
-     * 
+     *
      * @param string $key Clé de la métadonnée
      * @return bool
      */
@@ -715,7 +715,7 @@ class HttpSession
 
     /**
      * Supprime une métadonnée
-     * 
+     *
      * @param string $key Clé de la métadonnée
      * @return void
      */
@@ -734,7 +734,7 @@ class HttpSession
 
     /**
      * Détruit la session
-     * 
+     *
      * @return void
      */
     public function destroy(): void
@@ -769,7 +769,7 @@ class HttpSession
 
     /**
      * Vide toutes les données de la session
-     * 
+     *
      * @return void
      */
     public function clear(): void

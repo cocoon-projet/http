@@ -8,7 +8,7 @@ use Cocoon\Http\Facades\Session;
 
 /**
  * Trait pour la gestion des entrées et des erreurs dans les redirections
- * 
+ *
  * Ce trait fournit des méthodes pour persister les données de formulaire
  * et les messages d'erreur lors des redirections.
  */
