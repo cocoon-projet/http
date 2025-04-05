@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 use Cocoon\Http\Facades\Response;
-use Cocoon\Http\HttpResponseSend;
 use Psr\Http\Message\ResponseInterface;
 
 class HttpResponseTest extends TestCase
@@ -32,17 +31,6 @@ class HttpResponseTest extends TestCase
         $this->assertSame($body, (string) $response->getBody());
         $this->assertSame(200, $response->getStatusCode());
     }
-    /*
-    public function testHtmlSendResponse()
-    {
-        $body = '<html><title>html response</title><body>welcome</body></html>';
-        $response = Response::html($body);
-        ob_start();
-        HttpResponseSend::emit($response);
-        $send = ob_get_clean();
-        $this->assertSame($body, (string) $send);
-
-    }*/
 
     public function testXmlResponse()
     {
